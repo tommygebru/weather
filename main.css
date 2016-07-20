@@ -1,0 +1,113 @@
+/**********Great weather icons from Erik Flowers**********/
+
+@import "https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css";
+
+/************************************
+             Base Layers
+*************************************/
+
+* {
+  box-sizing: border-box;
+}
+
+.row-box {
+  height: 100vh;
+  width: 100%;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: solid none 1px;
+  overflow: hidden;
+}
+
+.row:hover {
+  display: flex;
+  flex: 1.5;
+  transition: 1s;
+  justify-content: center;
+  align-content: center;
+}
+
+.row {
+  display: flex;
+  color: #f2f0ed;
+  justify-content: space-around;
+  align-content: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 5vw;
+}
+
+
+/************************************
+            Rows
+*************************************/
+
+.orange {
+  background-color: #ff8c00;
+}
+
+.silver {
+  background-color: #f2f0ed;
+}
+
+.silver span {
+  color: #3a3133;
+}
+
+.red {
+  background-color: #ff4000;
+}
+
+.coffee {
+  background-color: #3a3133;
+}
+
+.blue {
+  background-color: #3333ff;
+}
+ 
+.navy {
+  background-color: #0000b3;
+}
+
+.navy a {
+  color: white;
+}
+
+
+/************************************
+        ``````SPANNING`````` 
+*************************************/
+
+span {
+  color: #f2f0ed;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 6.5vw;
+  margin: 50px 0px;
+}
+
+.silver span, .red span{justify-content:center;  font-size: 7.5vw;}
+
+.silver h1{margin-left:50px;}
+
+.wi {
+  color: #3a3133;
+ /* font-size: 120%;*/
+}
+
+.coffee span,
+.blue span,
+.navy span {
+  font-size: 5vw;
+  margin: 50px 0px;
+  padding-top: 0px;
+}
+
