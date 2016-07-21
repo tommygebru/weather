@@ -29,7 +29,6 @@
 .row:hover {
   display: flex;
   flex: 1.5;
-  transition: 1s;
   justify-content: center;
   align-content: center;
 }
@@ -41,6 +40,7 @@
   align-content: center;
   font-family: 'Quicksand', sans-serif;
   font-size: 5vw;
+  transition: 1s;
 }
 
 
