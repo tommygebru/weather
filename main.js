@@ -75,7 +75,7 @@ var WeatherApp =  function()
     var weather = weatherData.weather[0];
     
     // Build description text:
-    var description = weather.description + "in " + geo.city + ", " + geo.region_code;
+    var description = weather.description + " in " + geo.city + ", " + geo.region_code;
     // Capitalize the first letter:
     description = description.replace(description[0], description[0].toUpperCase());
       
