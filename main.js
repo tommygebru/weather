@@ -67,39 +67,41 @@ var WeatherApp =  function()
   
   // Updates contents of page elements
   // using values in geoLocationData & weatherData
-  // (I think this area can be simplified more but I'm too lazy)
   var updatePage = function()
   {
     console.log('updating page');
-    var city = geoLocationData.city;
-    var region = geoLocationData.region_code;
-    var cityRegion = "in " + city + ", " + region;
-    var description = weatherData.weather[0].description;
-    var descriptionReplace = description.replace(description[0], description[0].toUpperCase());
-    var descriptionUpdate = descriptionReplace + " " + cityRegion;
+    
+    var geo = geoLocationData;
+    var weather = weatherData.weather[0];
+    
+    // Build description text:
+    var description = weather.description + "in " + geo.city + ", " + geo.region_code;
+    // Capitalize the first letter:
+    description = description.replace(description[0], description[0].toUpperCase());
       
-    var main = weatherData.weather[0].main;
-    var id = weatherData.weather[0].id;
+    var main = weather.main;
+    var id = weather.id;
     var kelvin = weatherData.main.temp;
     var fahrenheit = Math.round(1.8 * (kelvin - 273) + 32);
     var celsius = Math.round(kelvin - 273);
-    //console.log("Success with kelvin: " + kelvin);
 
     var tempf = fahrenheit + "° F";
     var tempc = celsius + "° C";
 
+    // Update temperature area
     $(".red h1:nth-child(1)").text(tempf);
     $(".red h1:nth-child(2)").text(tempc);
 
     // Watch for clicks on the temperature area.
     $(".red span").click( handlers.toggleTemperature );
     
+    // Update icon area
     $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
-    //console.log("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
-       
+    
+    // Update date area
     document.getElementById("blue").innerHTML = new Date().toUTCString();
       
-    $(".coffee span").html(descriptionUpdate);
+    $(".coffee span").html(description);
   };
   
   // Finally, run the startup function after 
