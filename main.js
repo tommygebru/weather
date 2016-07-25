@@ -55,16 +55,8 @@ var WeatherApp =  function()
       $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
       //console.log("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
        
+    document.getElementById("blue").innerHTML = new Date().toUTCString();
       
-    function myFunction() {
-    var setDate = new Date();
-    var getDate = setDate.toUTCString();
-
-    document.getElementById("blue").innerHTML = getDate;
-    }
-      myFunction();
-      
-
       $(".coffee span").html(descriptionUpdate);
   };
   
