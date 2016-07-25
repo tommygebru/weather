@@ -9,8 +9,11 @@ var WeatherApp =  function()
   
   var startup = function()
   {
-    $.getJSON( "https://freegeoip.net/json/", handlers.geoLocation );
-    console.log(777);
+    $.getJSON( "https://freegeoip.net/json/" )
+    .then( handlers.geoLocation )
+    .then( handlers.weathermap )
+    .then( updatePage );
+    console.log(888);
   };
   
   handlers.toggleTemperature = function()
@@ -30,14 +33,12 @@ var WeatherApp =  function()
     + 'lat=' + geoLocationData.latitude 
     + '&lon=' + geoLocationData.longitude
     + '&appid=52c662f3c521e182bbc01e8ca55a3944';
-    $.getJSON( weatherApiUrl, handlers.weathermap );
+    return $.getJSON( weatherApiUrl );
   };
   
   handlers.weathermap = function( input )
   {
     weatherData = input;
-    
-    updatePage();
   };
   
   var updatePage = function()
