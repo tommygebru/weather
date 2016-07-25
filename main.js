@@ -30,34 +30,34 @@ var WeatherApp =  function()
     var city = getGeo.city;
     var region = getGeo.region_code;
     var cityRegion = "in " + city + ", " + region;
-      var description = getData.weather[0].description;
-      var descriptionReplace = description.replace(description[0], description[0].toUpperCase());
-      var descriptionUpdate = descriptionReplace + " " + cityRegion;
+    var description = getData.weather[0].description;
+    var descriptionReplace = description.replace(description[0], description[0].toUpperCase());
+    var descriptionUpdate = descriptionReplace + " " + cityRegion;
       
-      var main = getData.weather[0].main;
-      var id = getData.weather[0].id;
-      var kelvin = getData.main.temp;
-      var fahrenheit = Math.round(1.8 * (kelvin - 273) + 32);
-      var celsius = Math.round(kelvin - 273);
-      //console.log("Success with kelvin: " + kelvin);
+    var main = getData.weather[0].main;
+    var id = getData.weather[0].id;
+    var kelvin = getData.main.temp;
+    var fahrenheit = Math.round(1.8 * (kelvin - 273) + 32);
+    var celsius = Math.round(kelvin - 273);
+    //console.log("Success with kelvin: " + kelvin);
 
-      var tempf = fahrenheit + " ° F";
-      var tempc = celsius + " ° C";
+    var tempf = fahrenheit + " ° F";
+    var tempc = celsius + " ° C";
 
-      $(".red h1:nth-child(1)").text(tempf);
-      $(".red h1:nth-child(2)").text(tempc);
+    $(".red h1:nth-child(1)").text(tempf);
+    $(".red h1:nth-child(2)").text(tempc);
 
-      $(".red span").click(function(){
+    $(".red span").click(function(){
       $(".red h1").toggle();
-      });
+    });
       
         
-      $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
-      //console.log("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
+    $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
+    //console.log("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
        
     document.getElementById("blue").innerHTML = new Date().toUTCString();
       
-      $(".coffee span").html(descriptionUpdate);
+    $(".coffee span").html(descriptionUpdate);
   };
   
   // Finally, run the startup function after defining everything it needs
