@@ -19,6 +19,7 @@ var WeatherApp =  function()
   };
   
   gofetch.geoLocation = function() {
+    // Returns a Promise
     return $.getJSON( "https://freegeoip.net/json/" );
   };
   
@@ -27,28 +28,38 @@ var WeatherApp =  function()
     + 'lat=' + geoLocationData.latitude 
     + '&lon=' + geoLocationData.longitude
     + '&appid=52c662f3c521e182bbc01e8ca55a3944';
+    // Returns a Promise
     return $.getJSON( weatherApiUrl );
   };
 
   handlers.toggleTemperature = function()
   {
+    // Find currently visible & invisible elments
     var visible = $('.red span :visible');
     var hidden = $('.red span :hidden');
+    // Fade out the visible element.
     visible.fadeToggle();
+    // After the fade-out effect is "done", fade-in the other element.
     visible.promise().done( function(){ hidden.fadeToggle(); } )
   };
   
-  handlers.geoLocation = function(getGeo) 
+  // Sets app-wide geoLocationData var.
+  // input param must be data from an ajax request.
+  handlers.geoLocation = function(input) 
   {
-    // store in app-wide variable
-    geoLocationData = getGeo;
+    geoLocationData = input;
   };
   
+  // Sets app-wide weatherData var.
+  // input param must be data from an ajax request.
   handlers.weathermap = function( input )
   {
     weatherData = input;
   };
   
+  // Updates contents of page elements
+  // using values in geoLocationData & weatherData
+  // (I think this area can be simplified more but I'm too lazy)
   var updatePage = function()
   {
     var city = geoLocationData.city;
@@ -71,9 +82,9 @@ var WeatherApp =  function()
     $(".red h1:nth-child(1)").text(tempf);
     $(".red h1:nth-child(2)").text(tempc);
 
+    // Watch for clicks on the temperature area.
     $(".red span").click( handlers.toggleTemperature );
-      
-        
+    
     $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
     //console.log("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
        
@@ -82,7 +93,8 @@ var WeatherApp =  function()
     $(".coffee span").html(descriptionUpdate);
   };
   
-  // Finally, run the startup function after defining everything it needs
+  // Finally, run the startup function after 
+  // defining everything it requiries to run.
   startup();
   // and return the object itself.
   return this;
