@@ -4,18 +4,32 @@ var WeatherApp =  function()
   var geoLocationData = null;
   // Will contain data from the weather condition api.
   var weatherData = null;
+  // Will contain functions that perform network requests.
+  var gofetch = {};
   // Will contain various ajax or dom event handler callback functions.
   var handlers = {};
   
   var startup = function()
   {
-    $.getJSON( "https://freegeoip.net/json/" )
+    gofetch.geoLocation()
     .then( handlers.geoLocation )
+    .then( gofetch.weathermap )
     .then( handlers.weathermap )
     .then( updatePage );
-    console.log(888);
   };
   
+  gofetch.geoLocation = function() {
+    return $.getJSON( "https://freegeoip.net/json/" );
+  };
+  
+  gofetch.weathermap = function() {
+    var weatherApiUrl = 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?'
+    + 'lat=' + geoLocationData.latitude 
+    + '&lon=' + geoLocationData.longitude
+    + '&appid=52c662f3c521e182bbc01e8ca55a3944';
+    return $.getJSON( weatherApiUrl );
+  };
+
   handlers.toggleTemperature = function()
   {
     var visible = $('.red span :visible');
@@ -28,12 +42,6 @@ var WeatherApp =  function()
   {
     // store in app-wide variable
     geoLocationData = getGeo;
-    
-    var weatherApiUrl = 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?'
-    + 'lat=' + geoLocationData.latitude 
-    + '&lon=' + geoLocationData.longitude
-    + '&appid=52c662f3c521e182bbc01e8ca55a3944';
-    return $.getJSON( weatherApiUrl );
   };
   
   handlers.weathermap = function( input )
