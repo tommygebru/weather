@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+body:after{
+  content: " ";
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, rgba(0,0,0,0.5) -10%, transparent 25%, transparent 75%, rgba(0,0,0,0.5) 110%);
+  pointer-events: none;
+}
+
 .row-box {
   height: 100vh;
   width: 100%;
