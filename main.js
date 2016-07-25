@@ -37,6 +37,11 @@ var WeatherApp =  function()
   {
     weatherData = input;
     
+    updatePage();
+  };
+  
+  var updatePage = function()
+  {
     var city = geoLocationData.city;
     var region = geoLocationData.region_code;
     var cityRegion = "in " + city + ", " + region;
