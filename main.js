@@ -99,9 +99,15 @@ var WeatherApp =  function()
     $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
     
     // Update date area
-    document.getElementById("blue").innerHTML = new Date().toUTCString();
+    var dateElement = document.getElementById("blue");
+    dateElement.innerHTML = new Date().toUTCString();
       
     $(".coffee span").html(description);
+    
+    var intervalid = setInterval( function(){
+       dateElement.innerHTML = new Date().toUTCString(); 
+     }, 1000 );
+    
   };
   
   // Finally, run the startup function after 
