@@ -13,6 +13,10 @@ var WeatherApp =  function()
   {
     gofetch.geoLocation()
     .then( handlers.geoLocation )
+      .fail(function(x) {
+        console.log( "First $.get failed! Will retry everything one more time. ",x );
+        startup();
+      })
     .then( gofetch.weathermap )
     .then( handlers.weathermap )
     .then( updatePage );
