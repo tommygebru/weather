@@ -13,6 +13,14 @@ var WeatherApp =  function()
     console.log(777);
   };
   
+  handlers.toggleTemperature = function()
+  {
+    var visible = $('.red span :visible');
+    var hidden = $('.red span :hidden');
+    visible.fadeToggle();
+    visible.promise().done( function(){ hidden.fadeToggle(); } )
+  };
+  
   handlers.geoLocation = function(getGeo) 
   {
     // store in app-wide variable
@@ -41,15 +49,13 @@ var WeatherApp =  function()
     var celsius = Math.round(kelvin - 273);
     //console.log("Success with kelvin: " + kelvin);
 
-    var tempf = fahrenheit + " ° F";
-    var tempc = celsius + " ° C";
+    var tempf = fahrenheit + "° F";
+    var tempc = celsius + "° C";
 
     $(".red h1:nth-child(1)").text(tempf);
     $(".red h1:nth-child(2)").text(tempc);
 
-    $(".red span").click(function(){
-      $(".red h1").toggle();
-    });
+    $(".red span").click( handlers.toggleTemperature );
       
         
     $("#span").html("<i class='wi wi-owm-" + id + "'></i><h1>" + main + "</h1>");
