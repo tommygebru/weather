@@ -20,10 +20,12 @@ var WeatherApp =  function()
   
   gofetch.geoLocation = function() {
     // Returns a Promise
+    console.log('fetching geolocation');
     return $.getJSON( "https://freegeoip.net/json/" );
   };
   
   gofetch.weathermap = function() {
+    console.log('fetching weathermap');
     var weatherApiUrl = 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?'
     + 'lat=' + geoLocationData.latitude 
     + '&lon=' + geoLocationData.longitude
@@ -47,6 +49,7 @@ var WeatherApp =  function()
   // input param must be data from an ajax request.
   handlers.geoLocation = function(input) 
   {
+    console.log('handling geolocation');
     geoLocationData = input;
   };
   
@@ -54,6 +57,7 @@ var WeatherApp =  function()
   // input param must be data from an ajax request.
   handlers.weathermap = function( input )
   {
+    console.log('handling weathermap');
     weatherData = input;
   };
   
@@ -62,6 +66,7 @@ var WeatherApp =  function()
   // (I think this area can be simplified more but I'm too lazy)
   var updatePage = function()
   {
+    console.log('updating page');
     var city = geoLocationData.city;
     var region = geoLocationData.region_code;
     var cityRegion = "in " + city + ", " + region;
