@@ -30,21 +30,23 @@ var WeatherApp =  function()
     + 'lat=' + geoLocationData.latitude 
     + '&lon=' + geoLocationData.longitude
     + '&appid=52c662f3c521e182bbc01e8ca55a3944';
-    $.getJSON(weatherApiUrl, function(getData){ handlers.weathermap(getGeo,getData); } ); //end Data
+    $.getJSON( weatherApiUrl, handlers.weathermap );
   };
   
-  handlers.weathermap = function( getGeo,getData )
+  handlers.weathermap = function( input )
   {
-    var city = getGeo.city;
-    var region = getGeo.region_code;
+    weatherData = input;
+    
+    var city = geoLocationData.city;
+    var region = geoLocationData.region_code;
     var cityRegion = "in " + city + ", " + region;
-    var description = getData.weather[0].description;
+    var description = weatherData.weather[0].description;
     var descriptionReplace = description.replace(description[0], description[0].toUpperCase());
     var descriptionUpdate = descriptionReplace + " " + cityRegion;
       
-    var main = getData.weather[0].main;
-    var id = getData.weather[0].id;
-    var kelvin = getData.main.temp;
+    var main = weatherData.weather[0].main;
+    var id = weatherData.weather[0].id;
+    var kelvin = weatherData.main.temp;
     var fahrenheit = Math.round(1.8 * (kelvin - 273) + 32);
     var celsius = Math.round(kelvin - 273);
     //console.log("Success with kelvin: " + kelvin);
