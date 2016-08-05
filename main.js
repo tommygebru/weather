@@ -9,7 +9,7 @@ $(document).ready(function() {
     var city = getGeo.city;
     var region = getGeo.region_code;
     var cityRegion = "in " + city + ", " + region;
-    api = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=52c662f3c521e182bbc01e8ca55a3944';
+    api = 'https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=52c662f3c521e182bbc01e8ca55a3944';
     //console.log("Success with api: " + api);
     $.getJSON(api, function(getData) {
 
