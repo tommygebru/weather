@@ -112,4 +112,4 @@ span {
  /* font-size: 120%;*/
 }
 
-.coffee span{font-size:3vw;}
+.coffee span{font-size:2.5vw; padding:0 auto; line-height:15px;}
