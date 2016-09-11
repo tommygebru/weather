@@ -112,4 +112,4 @@ span {
  /* font-size: 120%;*/
 }
 
-.coffee span{justify-content:center;  line-height:30px;}
+.coffee span{font-size: 6vw; line-height:30px;}
