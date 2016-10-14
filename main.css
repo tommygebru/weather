@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+body:after{
+  content: " ";
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, rgba(0,0,0,0.5) -10%, transparent 25%, transparent 75%, rgba(0,0,0,0.5) 110%);
+  pointer-events: none;
+}
+
 .row-box {
   height: 100vh;
   width: 100%;
@@ -90,11 +101,9 @@ span {
   display: flex;
   justify-content: space-around;
   align-content: center;
-  font-size: 6.5vw;
-  margin: 50px 0px;
 }
 
-.silver span, .red span{justify-content:center;  font-size: 7.5vw;}
+.silver span, .red span {justify-content:center;  font-size: 7.5vw;}
 
 .silver h1{margin-left:50px;}
 
@@ -102,13 +111,9 @@ span {
   color: #3a3133;
  /* font-size: 120%;*/
 }
-.coffee span,
-.blue span,
-.navy span {
-  font-size: 5vw;
-  margin: 50px 0px;
-  padding-top: 0px;
+
+.coffee span{font-size: 4vw; line-height:30px; margin:0 auto; justify-content:center;}
+@media only screen and (max-width: 500px) 
+{
+  .coffee span{font-size: 1.5em;
 }
-.coffee span{font-size:3vw;}
-
-
